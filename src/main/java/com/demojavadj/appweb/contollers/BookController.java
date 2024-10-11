@@ -1,5 +1,7 @@
 package com.demojavadj.appweb.contollers;
 
+import com.demojavadj.appweb.models.Author;
+import com.demojavadj.appweb.models.Book;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,16 @@ public class BookController {
 
     @GetMapping("/listar")
     public String listr(Model model){
-        model.addAttribute("boks");
+        model.addAttribute("book");
         model.addAttribute("book", "Esto es el libro");
-        return "listar";
+        return "pages/list-book";
+    }
+    @GetMapping("/nuevo")
+    public  String addAuthor(Model model){
+        Book book = new Book();
+        model.addAttribute("title", "Agregar Autor");
+        model.addAttribute("book", book);
+        return "pages/form-book";
     }
 
     @GetMapping("/atributo")

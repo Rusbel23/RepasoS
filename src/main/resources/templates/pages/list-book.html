@@ -18,36 +18,33 @@
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-12">
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary">Lista Authores 🎉</h5>
+                                            <h5 class="card-title text-primary">Lista Libros 🎉</h5>
                                             <div>
                                                 <a th:href="@{/author/nuevo}" class="btn btn-primary">nuevo</a>
                                             </div>
                                             <div class="table-responsive text-nowrap">
                                                 <table class="table">
                                                     <thead>
-                                                        <tr>
-                                                            <th>id</th>
-                                                            <th>Nombre</th>
-                                                            <th>Apellido Parterno</th>
-                                                            <th>Apellido Materno</th>
-                                                            <th>Correo</th>
-                                                            <th>Celular</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
+                                                    <tr>
+                                                        <th>Codigo</th>
+                                                        <th>Nombre</th>
+                                                        <th>Titulo</th>
+                                                        <th>publicacion</th>
+                                                        <th>SBN</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr th:each="autor:${listaAuthor}">
-                                                            <td th:text="${autor.id}"></td>
-                                                            <td th:text="${autor.name}"></td>
-                                                            <td th:text="${autor.firstName}"></td>
-                                                            <td th:text="${autor.lastName}"></td>
-                                                            <td th:text="${autor.email}"></td>
-                                                            <td th:text="${autor.phone}"></td>
-                                                            <td>
-                                                                <a href="#" class="btn btn-warning">Editar</a>
-                                                                <a href="#" class="btn btn-danger">Eliminar</a>
-                                                            </td>
-                                                        </tr>
+                                                    <tr th:each="book:${listaBook}">
+                                                        <td th:text="${book.codeBook}"></td>
+                                                        <td th:text="${book.name}"></td>
+                                                        <td th:text="${book.title}"></td>
+                                                        <td th:text="${book.plubisher}"></td>
+                                                        <td th:text="${book.sbn}"></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-warning">Editar</a>
+                                                            <a href="#" class="btn btn-danger">Eliminar</a>
+                                                        </td>
+                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>

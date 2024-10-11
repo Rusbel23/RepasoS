@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "code_book")
-    private String codeBook;
+    private String code_Book;
     private String name;
     private String title;
     private Date plubisher;
@@ -28,9 +28,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String codeBook, String name, String title, Date plubisher, char sbn, Date createAt, Date updateAt) {
+    public Book(Long id, String code_Book, String name, String title, Date plubisher, char sbn, Date createAt, Date updateAt) {
         this.id = id;
-        this.codeBook = codeBook;
+        this.code_Book = code_Book;
         this.name = name;
         this.title = title;
         this.plubisher = plubisher;
@@ -48,11 +48,11 @@ public class Book {
     }
 
     public String getCodeBook() {
-        return codeBook;
+        return code_Book;
     }
 
     public void setCodeBook(String codeBook) {
-        this.codeBook = codeBook;
+        this.code_Book = codeBook;
     }
 
     public String getName() {

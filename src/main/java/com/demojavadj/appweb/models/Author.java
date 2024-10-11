@@ -12,7 +12,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nane;
+    private String name;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -28,10 +28,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long id, String nane, String firstName, String lastName, String email, String phone, Date createAt,
+    public Author(Long id, String name, String firstName, String lastName, String email, String phone, Date createAt,
                   Date updateAt) {
         this.id = id;
-        this.nane = nane;
+        this.name = name;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -49,11 +49,11 @@ public class Author {
     }
 
     public String getNane() {
-        return nane;
+        return name;
     }
 
     public void setNane(String nane) {
-        this.nane = nane;
+        this.name = nane;
     }
 
     public String getFirstName() {
