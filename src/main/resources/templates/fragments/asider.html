@@ -110,12 +110,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a th:href="@{/author/list-allauthor}" class="menu-link">
+                    <a th:href="@{/author/listar}" class="menu-link">
                         <div data-i18n="Notifications">Autores</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
+                    <a th:href="@{/author/nuevo}" class="menu-link">
                         <div data-i18n="Connections">Agregar Autores</div>
                     </a>
                 </li>
@@ -128,12 +128,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                    <a th:href="@{/book/listar}"class="menu-link" >
                         <div data-i18n="Basic">Libros</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                    <a th:href="@{/book/nuevo}" class="menu-link" >
                         <div data-i18n="Basic">Agregar libros</div>
                     </a>
                 </li>

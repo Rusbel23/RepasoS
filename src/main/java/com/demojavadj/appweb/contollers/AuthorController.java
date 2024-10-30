@@ -5,10 +5,7 @@ import com.demojavadj.appweb.models.Author;
 import com.demojavadj.appweb.services.impl.AuthorServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/author")
@@ -20,18 +17,11 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/list-allauthor")
+    @GetMapping("/listar")
     public String listAllAuthors(Model model) {
         model.addAttribute("title", "Lista de Auttores");
         model.addAttribute("listaAuthor", authorService.getAllAuthors());
         return "pages/list-author";
-    }
-
-    @GetMapping("/listar-autor")
-    public String listAuthors(Model model){
-        model.addAttribute("title", "Lista de Auttores");
-        model.addAttribute("listaAuthor", authorService.getAllAuthors());
-        return "autor";
     }
 
     @GetMapping("/nuevo")
@@ -42,9 +32,29 @@ public class AuthorController {
         return "pages/form-author";
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public String saveAuthor(@ModelAttribute("author") Author author){
         authorService.addAuthor(author);
-        return "redirect:/";
+        return "redirect:/author/listar";
+    }
+
+    @GetMapping("/showUpdateAuthor/{id}")
+    public String updateCustomer(@PathVariable(value="id") Long id,Model model){
+        Author author = authorService.getAuthorById(id);
+        model.addAttribute("author", author);
+        return "pages/form-authorActualizar";
+    }
+    @PostMapping("/update")
+    public String updateAuthor(@ModelAttribute("author") Author author) {
+        authorService.updateAuthor(author);
+        return "redirect:/author/listar";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteAuthor(@PathVariable(value="id") Long id){
+        authorService.deleteAuthor(id);
+        return "redirect:/author/listar";
+
     }
 }

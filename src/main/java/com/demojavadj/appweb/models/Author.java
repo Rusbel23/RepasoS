@@ -28,8 +28,7 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long id, String name, String firstName, String lastName, String email, String phone, Date createAt,
-                  Date updateAt) {
+    public Author(Long id, String name, String firstName, String lastName, String email, String phone, Date createAt, Date updateAt) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
@@ -48,12 +47,12 @@ public class Author {
         this.id = id;
     }
 
-    public String getNane() {
+    public String getName() {
         return name;
     }
 
-    public void setNane(String nane) {
-        this.name = nane;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFirstName() {

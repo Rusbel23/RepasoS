@@ -18,28 +18,30 @@
                                     <div class="col-sm-12">
                                         <div class="card-body">
                                             <h5 class="card-title text-primary">Registrar Libro 🎉</h5>
-                                            <form>
+                                            <form th:action="@{/book/save}" th:object="${book}" method="post">
                                                 <div>
-                                                    <label>Codigo de Libro</label>
-                                                    <input type="text" class="form-control" placeholder="0001">
+                                                    <label>Código del Libro</label>
+                                                    <input type="text" th:field="*{code_Book}" class="form-control" placeholder="Código">
                                                 </div>
                                                 <div>
-                                                    <label>Nombre</label>
-                                                    <input type="text" class="form-control" placeholder=" Juanito">
+                                                    <label>Nombre del Libro</label>
+                                                    <input type="text" th:field="*{name}" class="form-control" placeholder="Nombre">
                                                 </div>
                                                 <div>
-                                                    <label>Titulo</label>
-                                                    <input type="text" class="form-control" placeholder="Los Peces">
+                                                    <label>Título</label>
+                                                    <input type="text" th:field="*{title}" class="form-control" placeholder="Título">
                                                 </div>
                                                 <div>
-                                                    <label>Publicacion</label>
-                                                    <input type="text" class="form-control" placeholder="Juanito@gmail.com">
+                                                    <label>Fecha de Publicación</label>
+                                                    <input type="date" th:field="*{publisher}" class="form-control">
                                                 </div>
                                                 <div>
                                                     <label>SBN</label>
-                                                    <input type="text" class="form-control" placeholder="+5199968555">
+                                                    <input type="text" th:field="*{sbn}" class="form-control" placeholder="SBN">
                                                 </div>
+                                                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
                                             </form>
+
                                         </div>
                                     </div>
 

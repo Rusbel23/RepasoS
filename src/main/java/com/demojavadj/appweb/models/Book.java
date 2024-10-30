@@ -1,6 +1,7 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,7 +15,8 @@ public class Book {
     private String code_Book;
     private String name;
     private String title;
-    private Date plubisher;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date publisher;
     private char sbn;
     @Column(name = "create_at")
     private Date createAt;
@@ -28,15 +30,16 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String code_Book, String name, String title, Date plubisher, char sbn, Date createAt, Date updateAt) {
+    public Book(Long id, String code_Book, String name, String title, Date publisher, char sbn, Date createAt, Date updateAt, Author author) {
         this.id = id;
         this.code_Book = code_Book;
         this.name = name;
         this.title = title;
-        this.plubisher = plubisher;
+        this.publisher = publisher;
         this.sbn = sbn;
         this.createAt = createAt;
         this.updateAt = updateAt;
+        this.author = author;
     }
 
     public Long getId() {
@@ -47,12 +50,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getCodeBook() {
+    public String getCode_Book() {
         return code_Book;
     }
 
-    public void setCodeBook(String codeBook) {
-        this.code_Book = codeBook;
+    public void setCode_Book(String code_Book) {
+        this.code_Book = code_Book;
     }
 
     public String getName() {
@@ -71,12 +74,12 @@ public class Book {
         this.title = title;
     }
 
-    public Date getPlubisher() {
-        return plubisher;
+    public Date getPublisher() {
+        return publisher;
     }
 
-    public void setPlubisher(Date plubisher) {
-        this.plubisher = plubisher;
+    public void setPublisher(Date publisher) {
+        this.publisher = publisher;
     }
 
     public char getSbn() {
@@ -101,5 +104,13 @@ public class Book {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }

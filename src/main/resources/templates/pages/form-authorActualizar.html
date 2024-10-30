@@ -11,21 +11,23 @@
             <span th:replace="fragments/header::header"></span>
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
+
                     <div class="row">
                         <div class="col-lg-12 mb-4 order-0">
                             <div class="card">
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-12">
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary">Registrar Autor 🎉</h5>
-                                            <form th:action="@{/author/save}" th:object="${author}" method="post">
+                                            <h5 class="card-title text-primary">Actualizar Autor 🎉</h5>
+                                            <form th:action="@{/author/update}" th:object="${author}" method="post">
+                                                <input type="hidden" th:field="*{id}" />
                                                 <div>
                                                     <label>Nombre Autor</label>
                                                     <input type="text" th:field="*{name}" class="form-control" placeholder="Juanito">
                                                 </div>
                                                 <div>
                                                     <label>Apellido Paterno</label>
-                                                    <input type="text" th:field="*{firstName}" class="form-control" placeholder=" perez">
+                                                    <input type="text" th:field="*{firstName}" class="form-control" placeholder="perez">
                                                 </div>
                                                 <div>
                                                     <label>Apellido Materno</label>
@@ -39,8 +41,11 @@
                                                     <label>Telefono</label>
                                                     <input type="text" th:field="*{phone}" class="form-control" placeholder="+5199968555">
                                                 </div>
-                                                <div> <button type="submit" class="btn btn-success btn-sm" >Guardar</button></div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                                                </div>
                                             </form>
+
                                         </div>
                                     </div>
 

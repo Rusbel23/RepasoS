@@ -6,13 +6,17 @@ import com.demojavadj.appweb.services.BookService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
+
     private final BookRepository bookRepository;
+
     public BookServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
+
     @Override
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
@@ -20,16 +24,26 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void addBook(Book book) {
-
+        bookRepository.save(book);
     }
 
     @Override
     public Book getBookById(Long id) {
-        return null;
+        Optional<Book> book = bookRepository.findById(id);
+        if (book.isPresent()) {
+            return book.get();
+        } else {
+            throw new RuntimeException("Book not found with id " + id);
+        }
+    }
+
+    @Override
+    public void updateBook(Book book) {
+        bookRepository.save(book);
     }
 
     @Override
     public void deleteBook(Long id) {
-
+        bookRepository.deleteById(id);
     }
 }

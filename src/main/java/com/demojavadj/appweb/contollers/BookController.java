@@ -1,51 +1,58 @@
 package com.demojavadj.appweb.contollers;
 
-import com.demojavadj.appweb.models.Author;
 import com.demojavadj.appweb.models.Book;
+import com.demojavadj.appweb.services.impl.BookServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/book")
 public class BookController {
 
+    private final BookServiceImpl bookService;
+
+    public BookController(BookServiceImpl bookService) {
+        this.bookService = bookService;
+    }
+
     @GetMapping("/listar")
-    public String listr(Model model){
-        model.addAttribute("book");
-        model.addAttribute("book", "Esto es el libro");
+    public String listAllBooks(Model model) {
+        model.addAttribute("title", "Lista de Libros");
+        model.addAttribute("listaBook", bookService.getAllBooks());
         return "pages/list-book";
     }
+
     @GetMapping("/nuevo")
-    public  String addAuthor(Model model){
+    public String addBook(Model model) {
         Book book = new Book();
-        model.addAttribute("title", "Agregar Autor");
+        model.addAttribute("title", "Agregar Libro");
         model.addAttribute("book", book);
         return "pages/form-book";
     }
 
-    @GetMapping("/atributo")
-    public String atributos(Model model){
-        Integer numero1 = 12;
-        Integer numero2 = 13;
-        Integer cifra = 12345;
-        Date fecha = new Date();
-        List<String> paises = new ArrayList<String>();
-        paises.add("Peru");
-        paises.add("Madrid");
-        paises.add("Malta");
-        paises.add("Rome");
+    @PostMapping("/save")
+    public String saveBook(@ModelAttribute("book") Book book) {
+        bookService.addBook(book);
+        return "redirect:/book/listar";
+    }
 
-        model.addAttribute("numero1", numero1);
-        model.addAttribute("numero2", numero2);
-        model.addAttribute("cifra", cifra);
-        model.addAttribute("fecha", fecha);
-        model.addAttribute("paises", paises);
-        return "template/atributos";
+    @GetMapping("/showUpdateBook/{id}")
+    public String updateBook(@PathVariable(value = "id") Long id, Model model) {
+        Book book = bookService.getBookById(id);
+        model.addAttribute("book", book);
+        return "pages/form-bookActualizar";
+    }
+
+    @PostMapping("/update")
+    public String updateBook(@ModelAttribute("book") Book book) {
+        bookService.updateBook(book);
+        return "redirect:/book/listar";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBook(@PathVariable(value = "id") Long id) {
+        bookService.deleteBook(id);
+        return "redirect:/book/listar";
     }
 }
