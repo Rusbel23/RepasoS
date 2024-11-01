@@ -25,6 +25,7 @@ public class Author {
     @Column(name = "update_at")
     private Date updateAt;
 
+
     public Author() {
     }
 

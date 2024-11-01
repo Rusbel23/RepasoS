@@ -1,19 +1,25 @@
 package com.demojavadj.appweb.contollers;
 
+import com.demojavadj.appweb.models.Author;
 import com.demojavadj.appweb.models.Book;
+import com.demojavadj.appweb.services.impl.AuthorServiceImpl;
 import com.demojavadj.appweb.services.impl.BookServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/book")
 public class BookController {
 
     private final BookServiceImpl bookService;
+    private final AuthorServiceImpl authorService;
 
-    public BookController(BookServiceImpl bookService) {
+    public BookController(BookServiceImpl bookService, AuthorServiceImpl authorService) {
         this.bookService = bookService;
+        this.authorService = authorService;
     }
 
     @GetMapping("/listar")
@@ -25,9 +31,12 @@ public class BookController {
 
     @GetMapping("/nuevo")
     public String addBook(Model model) {
+        List<Author> authors = authorService.getAllAuthors();
         Book book = new Book();
         model.addAttribute("title", "Agregar Libro");
         model.addAttribute("book", book);
+        model.addAttribute("" +
+                "", authors);
         return "pages/form-book";
     }
 

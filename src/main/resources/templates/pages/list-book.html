@@ -32,6 +32,7 @@
                                                         <th>Título</th>
                                                         <th>Fecha de Publicación</th>
                                                         <th>SBN</th>
+                                                        <th>Autor</th>
                                                         <th>Acciones</th>
                                                     </tr>
                                                     </thead>
@@ -43,6 +44,7 @@
                                                         <td th:text="${book.title}"></td>
                                                         <td th:text="${#dates.format(book.publisher, 'dd-MM-yyyy')}"></td>
                                                         <td th:text="${book.sbn}"></td>
+                                                        <td th:text="${book.author.name} + ' ' + ${book.author.firstName}"></td>
                                                         <td>
                                                             <a th:href="@{/book/showUpdateBook/{id}(id=${book.id})}" class="btn btn-warning">Editar</a>
                                                             <a th:href="@{/book/delete/{id}(id=${book.id})}" class="btn btn-danger">Eliminar</a>
