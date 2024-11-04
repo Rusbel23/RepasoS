@@ -42,7 +42,7 @@
                                                         <td th:text="${book.code_Book}"></td>
                                                         <td th:text="${book.name}"></td>
                                                         <td th:text="${book.title}"></td>
-                                                        <td th:text="${#dates.format(book.publisher, 'dd-MM-yyyy')}"></td>
+                                                        <td th:text="${#dates.format(book.publisher, 'dd/MM/yyyy')}"></td>
                                                         <td th:text="${book.sbn}"></td>
                                                         <td th:text="${book.author.name} + ' ' + ${book.author.firstName}"></td>
                                                         <td>

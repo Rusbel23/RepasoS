@@ -18,27 +18,35 @@
                   <div class="col-sm-12">
                     <div class="card-body">
                       <h5 class="card-title text-primary">Actualizar Libro 🎉</h5>
-                      <form th:action="@{/book/update}" th:object="${book}" method="post">
-                        <input type="hidden" th:field="*{id}" />
+                      <form th:action="@{/book/save}" th:object="${book}" method="post">
                         <div>
                           <label>Código del Libro</label>
-                          <input type="text" th:field="*{code_Book}" class="form-control" placeholder="Código">
+                          <input type="text" th:field="*{code_Book}" class="form-control" placeholder="Código" required>
                         </div>
                         <div>
                           <label>Nombre del Libro</label>
-                          <input type="text" th:field="*{name}" class="form-control" placeholder="Nombre">
+                          <input type="text" th:field="*{name}" class="form-control" placeholder="Nombre" required>
                         </div>
                         <div>
                           <label>Título</label>
-                          <input type="text" th:field="*{title}" class="form-control" placeholder="Título">
+                          <input type="text" th:field="*{title}" class="form-control" placeholder="Título" required>
                         </div>
                         <div>
                           <label>Fecha de Publicación</label>
-                          <input type="date" th:field="*{publisher}" class="form-control">
+                          <input type="date" th:field="*{publisher}" class="form-control" required>
                         </div>
                         <div>
                           <label>SBN</label>
-                          <input type="text" th:field="*{sbn}" class="form-control" placeholder="SBN">
+                          <input type="text" th:field="*{sbn}" class="form-control" placeholder="SBN" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="author" class="form-label">Autores</label>
+                          <select class="form-select" id="author" th:field="*{author}" required>
+                            <option th:each="autor:${authors}"
+                                    th:value="${autor.id}"
+                                    th:text="${autor.name}">
+                            </option>
+                          </select>
                         </div>
                         <div class="mt-3">
                           <button type="submit" class="btn btn-success btn-sm">Actualizar</button>
