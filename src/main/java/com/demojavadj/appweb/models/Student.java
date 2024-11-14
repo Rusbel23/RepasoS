@@ -2,48 +2,34 @@ package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
 import java.util.Date;
-
 @Entity
-@Table(name = "users")
-public class Users {
+@Table (name = "students")
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length =20)
     private String name;
-    @Column(name = "first_name")
+    @Column(name = "first_name", length =50)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", length =50)
     private String lastName;
-    private String direction;
+    @Column(unique = false, nullable = true,length =20)
+    private String email;
     @Column(unique = true)
-    private char dni;
+    private String phone;
+    private String address;
+    private String city;
+    private boolean state;
+    private String zip;
+
     @Column(name = "create_at")
     private Date createAt;
     @Column(name = "update_at")
     private Date updateAt;
-    @ManyToMany(fetch =FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName="id")
-    )
-    private Collection<Role>roles;
 
-
-    public Users() {
-    }
-
-    public Users(Long id, String name, String firstName, String lastName, String direction, char dni, Date createAt, Date updateAt) {
-        this.id = id;
-        this.name = name;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.direction = direction;
-        this.dni = dni;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
+    public Student() {
     }
 
     public Long getId() {
@@ -78,20 +64,52 @@ public class Users {
         this.lastName = lastName;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public char getDni() {
-        return dni;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDni(char dni) {
-        this.dni = dni;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public Date getCreateAt() {
