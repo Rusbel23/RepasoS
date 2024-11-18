@@ -40,6 +40,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(Long id) {
-        studentRepository.deleteById(id);
+        Optional<Student> student = studentRepository.findById(id);
+        if (student.isPresent()) {
+            studentRepository.delete(student.get());
+        } else {
+            throw new RuntimeException("Student not found with id " + id);
+        }
     }
 }

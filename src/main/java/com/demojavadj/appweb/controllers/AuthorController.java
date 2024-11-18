@@ -1,4 +1,4 @@
-package com.demojavadj.appweb.contollers;
+package com.demojavadj.appweb.controllers;
 
 
 import com.demojavadj.appweb.models.Author;

@@ -1,6 +1,7 @@
-package com.demojavadj.appweb.contollers;
+package com.demojavadj.appweb.controllers;
 
 import com.demojavadj.appweb.models.Student;
+import com.demojavadj.appweb.models.Users;
 import com.demojavadj.appweb.services.impl.StudentServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

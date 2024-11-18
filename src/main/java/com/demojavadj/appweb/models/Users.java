@@ -1,9 +1,9 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
-
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "users")
@@ -18,32 +18,30 @@ public class Users {
     private String lastName;
     private String direction;
     @Column(unique = true)
-    private char dni;
+    private int dni;
     @Column(name = "create_at")
     private Date createAt;
     @Column(name = "update_at")
     private Date updateAt;
-    @ManyToMany(fetch =FetchType.EAGER, cascade = CascadeType.ALL)
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName="id")
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
-    private Collection<Role>roles;
-
+    private Collection<Role> roles = new HashSet<>();
 
     public Users() {
     }
 
-    public Users(Long id, String name, String firstName, String lastName, String direction, char dni, Date createAt, Date updateAt) {
+    public Users(Long id, String name, String firstName, String lastName, String direction, int dni) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
         this.lastName = lastName;
         this.direction = direction;
         this.dni = dni;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public Long getId() {
@@ -86,11 +84,11 @@ public class Users {
         this.direction = direction;
     }
 
-    public char getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(char dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -108,5 +106,13 @@ public class Users {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 }
