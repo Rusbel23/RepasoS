@@ -1,6 +1,8 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -11,15 +13,20 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "El nombre es obligatorio")
     private String name;
+    @NotEmpty(message = "El Apellido paterno es obligatorio")
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
+    @NotEmpty(message = "El Apellido Materno es obligatorio")
     private String lastName;
+    @NotEmpty(message = "La direccion es obligatorio")
     private String direction;
     @Column(unique = true)
     private int dni;
     @Column(unique = true, nullable = true)
+    @NotEmpty(message = "El correo es obligatorio")
     private String email;
 
     private String password;
