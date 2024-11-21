@@ -19,6 +19,10 @@ public class Users {
     private String direction;
     @Column(unique = true)
     private int dni;
+    @Column(unique = true, nullable = true)
+    private String email;
+
+    private String password;
     @Column(name = "create_at")
     private Date createAt;
     @Column(name = "update_at")
