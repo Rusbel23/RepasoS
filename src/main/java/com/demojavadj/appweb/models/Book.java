@@ -1,6 +1,7 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -13,8 +14,11 @@ public class Book {
     private Long id;
     @Column(name = "code_book")
     private String code_Book;
+    @NotEmpty(message = "El nombre es obligatorio")
     private String name;
+    @NotEmpty(message = "El titulo es obligatorio")
     private String title;
+    @NotEmpty(message = "El publicación es obligatorio")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date publisher;
     private char sbn;

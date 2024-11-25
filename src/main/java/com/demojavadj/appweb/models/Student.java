@@ -1,6 +1,7 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.Date;
 @Entity
@@ -9,16 +10,21 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "El nombre es obligatorio")
     @Column(nullable = false, length =20)
     private String name;
+    @NotEmpty(message = "El Apellido paterno es obligatorio")
     @Column(name = "first_name", length =50)
     private String firstName;
+    @NotEmpty(message = "El Apellido materno es obligatorio")
     @Column(name = "last_name", length =50)
     private String lastName;
     @Column(unique = false, nullable = true,length =20)
     private String email;
+    @NotEmpty(message = "El numero es obligatorio")
     @Column(unique = true)
     private String phone;
+    @NotEmpty(message = "La dirección es obligatorio")
     private String address;
     private String city;
     private boolean state;

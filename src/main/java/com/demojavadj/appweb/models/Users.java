@@ -2,6 +2,7 @@ package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.util.Collection;
 import java.util.Date;
@@ -24,9 +25,12 @@ public class Users {
     @NotEmpty(message = "La direccion es obligatorio")
     private String direction;
     @Column(unique = true)
+    @NotEmpty(message = "Ingresar DNI es obligatorio")
     private int dni;
-    @Column(unique = true, nullable = true)
+
     @NotEmpty(message = "El correo es obligatorio")
+    @Size(min = 7, max = 20, message = "El cofrreo debe ser minimo de 7 a 20 caracteres")
+    @Column(unique = true, nullable = true)
     private String email;
 
     private String password;

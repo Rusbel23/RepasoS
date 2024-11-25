@@ -21,6 +21,7 @@ public class UsersServiceImpl implements UsersService {
         this.roleRepository = roleRepository;
     }
 
+
     @Override
     public List<Users> getAllUsers() {
         return usersRepository.findAll();
