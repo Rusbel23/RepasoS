@@ -14,9 +14,9 @@ public class ConfigSecurity {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", ".js", ".css").permitAll()
-                        .requestMatchers("/author/listar", ".js", ".css").permitAll()
-                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/**", "/js/**", "/css/**","/img/**").permitAll()
+                        .requestMatchers("/author/listar", "/js/**", "/css/**").permitAll()
+                        .requestMatchers("/users/listar","/js/**", "/css/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/logout").permitAll()
                         .anyRequest().authenticated()
